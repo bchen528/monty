@@ -26,6 +26,7 @@ typedef struct stack_s
  */
 typedef struct cmd_s
 {
+	char *op;
 	int arg;
 	int mode;
 	stack_t **head;
