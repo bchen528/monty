@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 	stack_t *head = NULL;
 	stack_t *tail = NULL;
 	int mode = 0;
+	unsigned int line_number = 1;
 
 	if (argc != 2)
 	{
@@ -33,7 +34,8 @@ int main(int argc, char **argv)
 	while ((read = getline(&line, &len, fd)) != -1)
 	{
 		printf("%s", line);
-		eval(line, head, tail, mode);
+		eval(line, head, tail, &mode, line_number);
+		line_number++;
 	}
 
 	return (EXIT_SUCCESS);

@@ -8,7 +8,7 @@
  * @mode: stack or queue mode
  * @ln: line number being evaluated
  */
-void eval(char *line, stack_t **h, stack_t **t, int mode, unsigned int ln)
+void eval(char *line, stack_t **h, stack_t **t, int *mode, unsigned int ln)
 {
 	cmd_t cmd;
 

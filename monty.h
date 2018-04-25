@@ -36,7 +36,7 @@ typedef struct cmd_s
 {
 	char *op;
 	int arg;
-	int mode;
+	int *mode;
 	unsigned int line_number;
 	stack_t **head;
 	stack_t **tail;
@@ -56,7 +56,7 @@ typedef struct instruction_s
 	void (*f)(cmd_t *cmd);
 } instruction_t;
 
-void eval(char *line, stack_t **h, stack_t **t, int mode, unsigned int ln);
+void eval(char *line, stack_t **h, stack_t **t, int *mode, unsigned int ln);
 int parse(char *line, cmd_t *cmd);
 void run(cmd_t *cmd);
 #endif
