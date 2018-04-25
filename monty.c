@@ -12,6 +12,9 @@ int main(int argc, char **argv)
 	char *line;
 	size_t len = 0;
 	ssize_t read;
+	stack_t *head = NULL;
+	stack_t *tail = NULL;
+	int mode = 0;
 
 	if (argc != 2)
 	{
@@ -30,6 +33,7 @@ int main(int argc, char **argv)
 	while ((read = getline(&line, &len, fd)) != -1)
 	{
 		printf("%s", line);
+		eval(line, head, tail, mode);
 	}
 
 	return (EXIT_SUCCESS);
