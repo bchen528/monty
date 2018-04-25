@@ -58,4 +58,5 @@ typedef struct instruction_s
 
 void eval(char *line, stack_t **h, stack_t **t, int mode, unsigned int ln);
 void parse(char *line, cmd_t *cmd);
+void run(cmd_t *cmd);
 #endif
