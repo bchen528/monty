@@ -36,6 +36,7 @@ typedef struct cmd_s
 	char *op;
 	int arg;
 	int mode;
+	unsigned int line_number;
 	stack_t **head;
 	stack_t **tail;
 } cmd_s;
