@@ -12,6 +12,7 @@ int parse(char *line, cmd_t *cmd)
 	char *op;
 	char *arg;
 	int siz;
+	unsigned int ln = cmd->line_number;
 
 	if (line == NULL)
 		return (0);
@@ -38,7 +39,7 @@ int parse(char *line, cmd_t *cmd)
 		arg = strtok(NULL, delims);
 		if (arg == NULL)
 		{
-			printf("1: L<line_number>: usage: push integer\n");
+			printf("L%d: usage: push integer\n", ln);
 			exit(EXIT_FAILURE);
 		}
 		siz = strlen(arg);
@@ -46,16 +47,14 @@ int parse(char *line, cmd_t *cmd)
 			if (arg[siz] > 57 || arg[siz] < 48)
 			{
 				printf("index: %d, ascii: %d\n", siz, arg[siz]);
-				printf("2: L<line_number>: usage: push integer\n");
+				printf("L%d: usage: push integer\n", ln);
 				exit(EXIT_FAILURE);
 			}
 		cmd->arg = atoi(arg);
-		printf("op: %s %d\n", op, cmd->arg);
 		cmd->op = op;
 		return (1);
 	}
 	cmd->op = op;
-	printf("op: %s\n", op);
 
 	return (1);
 }

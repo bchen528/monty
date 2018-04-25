@@ -93,4 +93,5 @@ void pstr(cmd_t *cmd)
 
 void nop(cmd_t *cmd)
 {
+	(void) cmd;
 }
