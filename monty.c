@@ -8,7 +8,10 @@
  */
 int main(int argc, char **argv)
 {
-	int fd;
+	FILE *fd;
+	char *line;
+	size_t len = 0;
+	ssize_t read;
 
 	if (argc != 2)
 	{
@@ -16,12 +19,18 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	fd = open(argv[1], O_RDONLY);
+	fd = fopen(argv[1], "r");
 
-	if (fd == -1)
+	if (fd == NULL)
 	{
 		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
+	while ((read = getline(&line, &len, fd)) != -1)
+	{
+		printf("%s", line);
+	}
+
+	return (EXIT_SUCCESS);
 }
