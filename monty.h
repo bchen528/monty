@@ -63,4 +63,5 @@ void run(cmd_t *cmd);
 void push(cmd_t *cmd);
 void pall(cmd_t *cmd);
 void pint(cmd_t *cmd);
+void pop(cmd_t *cmd);
 #endif

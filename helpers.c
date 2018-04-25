@@ -49,10 +49,7 @@ void pall(cmd_t *cmd)
   stack_t *h = *cmd->head;
 
   if (h == NULL)
-    {
-      printf("L%d: usage: push integer\n", cmd->line_number);
-      exit(EXIT_FAILURE);
-    }
+      return;
 
   while (h != NULL)
     {

@@ -10,6 +10,7 @@ void run(cmd_t *cmd)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	int i = 0;

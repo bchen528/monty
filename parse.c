@@ -17,7 +17,6 @@ int parse(char *line, cmd_t *cmd)
 		return (0);
 
 	op = strtok(line, delims);
-	printf("op: %s\n", op);
 
 	if (op == NULL || op[0] == '#')
 		return (0);
@@ -51,7 +50,12 @@ int parse(char *line, cmd_t *cmd)
 				exit(EXIT_FAILURE);
 			}
 		cmd->arg = atoi(arg);
+		printf("op: %s %d\n", op, cmd->arg);
+		cmd->op = op;
+		return (1);
 	}
 	cmd->op = op;
+	printf("op: %s\n", op);
+
 	return (1);
 }
