@@ -39,14 +39,15 @@ int parse(char *line, cmd_t *cmd)
 		arg = strtok(NULL, delims);
 		if (arg == NULL)
 		{
-			printf("L<line_number>: usage: push integer\n");
+			printf("1: L<line_number>: usage: push integer\n");
 			exit(EXIT_FAILURE);
 		}
 		siz = strlen(arg);
 		while (siz--)
 			if (arg[siz] > 57 || arg[siz] < 48)
 			{
-				printf("L<line_number>: usage: push integer\n");
+				printf("index: %d, ascii: %d\n", siz, arg[siz]);
+				printf("2: L<line_number>: usage: push integer\n");
 				exit(EXIT_FAILURE);
 			}
 		cmd->arg = atoi(arg);
