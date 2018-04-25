@@ -40,7 +40,7 @@ typedef struct cmd_s
 	unsigned int line_number;
 	stack_t **head;
 	stack_t **tail;
-} cmd_s;
+} cmd_t;
 
 /**
  * struct instruction_s - opcoode and its function
@@ -53,8 +53,9 @@ typedef struct cmd_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(cmd_s *cmd);
+	void (*f)(cmd_t *cmd);
 } instruction_t;
 
 void eval(char *line, stack_t **h, stack_t **t, int mode, unsigned int ln);
+void parse(char *line, cmd_t *cmd);
 #endif
