@@ -110,7 +110,8 @@ void swap(cmd_t *cmd)
 {
   stack_t **h = cmd->head;
   stack_t *first = NULL;
-  stack_t * second = NULL;
+  stack_t *second = NULL;
+  stack_t *third = NULL;
 
   if (*h == NULL || h == NULL || (*h)->next == NULL || (*h)->next->next == NULL)
     {
@@ -119,10 +120,11 @@ void swap(cmd_t *cmd)
     }
   first = *h;
   second = (*h)->next;
+  third = second->next;
 
-  second->next = first;
   first->next = second->next;
-  (second->next)->prev = first;
+  second->next = first;
+  third->prev = first;
   first->prev = second;
   second->prev = NULL;
   *h = second;
