@@ -52,6 +52,6 @@ typedef struct cmd_s
 typedef struct instruction_s
 {
 	char *opcode;
-	int (*f)(cmd_s *cmd);
+	void (*f)(cmd_s *cmd);
 } instruction_t;
 #endif
