@@ -8,15 +8,16 @@
  */
 int parse(char *line, cmd_t *cmd)
 {
-	char delims[] = " \t\r\n"
+	char delims[] = " \t\r\n";
 	char *op;
-	int arg;
+	char *arg;
 	int siz;
 
-	if (cmdline == NULL)
+	if (line == NULL)
 		return (0);
 
 	op = strtok(line, delims);
+	printf("op: %s\n", op);
 
 	if (op == NULL || op[0] == '#')
 		return (0);
@@ -48,7 +49,7 @@ int parse(char *line, cmd_t *cmd)
 				printf("L<line_number>: usage: push integer\n");
 				exit(EXIT_FAILURE);
 			}
-		cmd->arg = arg;
+		cmd->arg = atoi(arg);
 	}
 	cmd->op = op;
 	return (1);

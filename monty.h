@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <limits.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -59,4 +60,7 @@ typedef struct instruction_s
 void eval(char *line, stack_t **h, stack_t **t, int *mode, unsigned int ln);
 int parse(char *line, cmd_t *cmd);
 void run(cmd_t *cmd);
+void push(cmd_t *cmd);
+void pall(cmd_t *cmd);
+void pint(cmd_t *cmd);
 #endif

@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	while ((read = getline(&line, &len, fd)) != -1)
 	{
 		printf("%s", line);
-		eval(line, head, tail, &mode, line_number);
+		eval(line, &head, &tail, &mode, line_number);
 		line_number++;
 	}
 

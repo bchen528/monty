@@ -7,7 +7,7 @@
  * Return: address of new node, or NULL if failed
  */
 
-void *push(cmd_t *cmd)
+void push(cmd_t *cmd)
 {
   stack_t **h = cmd->head;
   stack_t *new = NULL;
@@ -23,14 +23,14 @@ void *push(cmd_t *cmd)
   
   if (*h == NULL)
     {
-      new->n = n;
+      new->n = cmd->arg;
       new->next = *h;
       new->prev = NULL;
       *h = new;
       return;
     }
   (*h)->prev = new;
-  new->n = n;
+  new->n = cmd->arg;
   new->next = *h;
   new->prev = NULL;
   *h = new;
@@ -45,7 +45,7 @@ void *push(cmd_t *cmd)
 
 void pall(cmd_t *cmd)
 {
-  stack_t *h = cmd->head;
+  stack_t *h = *cmd->head;
 
   if (h == NULL)
     {
@@ -68,7 +68,7 @@ void pall(cmd_t *cmd)
 
 void pint(cmd_t *cmd)
 {
-  stack_t *h = cmd->head;
+  stack_t *h = *cmd->head;
 
   if (h == NULL)
     {
@@ -127,7 +127,7 @@ void swap(cmd_t *cmd)
   (second->next)->prev = first;
   first->prev = second;
   second->prev = NULL;
-  *head = second;
+  *h = second;
 }
 
 /**
