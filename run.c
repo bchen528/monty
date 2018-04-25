@@ -15,6 +15,13 @@ void run(cmd_t *cmd)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"divide", divide},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	int i = 0;

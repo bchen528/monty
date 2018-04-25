@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <string.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -68,4 +69,11 @@ void swap(cmd_t *cmd);
 void add(cmd_t *cmd);
 void nop(cmd_t *cmd);
 void sub(cmd_t *cmd);
-#endif
+void divide(cmd_t *cmd);
+void mul(cmd_t *cmd);
+void mod(cmd_t *cmd);
+void pchar(cmd_t *cmd);
+void pstr(cmd_t *cmd);
+void rotl(cmd_t *cmd);
+void rotr(cmd_t *cmd);
+#endif /*MONTY_H*/

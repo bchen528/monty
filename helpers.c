@@ -91,7 +91,7 @@ void pop(cmd_t *cmd)
 
     if (*h == NULL || h == NULL)
       {
-	printf("L%d: can't pop an empty stack", cmd->line_number);
+	printf("L%d: can't pop an empty stack\n", cmd->line_number);
 	exit(EXIT_FAILURE);
       }
 
@@ -113,9 +113,9 @@ void swap(cmd_t *cmd)
   stack_t *second = NULL;
   stack_t *third = NULL;
 
-  if (*h == NULL || h == NULL || (*h)->next == NULL || (*h)->next->next == NULL)
+  if (*h == NULL || h == NULL || (*h)->next == NULL)
     {
-      printf("L%d: can't swap, stack too short", cmd->line_number);
+      printf("L%d: can't swap, stack too short\n", cmd->line_number);
       exit(EXIT_FAILURE);
     }
   first = *h;
@@ -143,9 +143,9 @@ void add(cmd_t *cmd)
   stack_t *node_2 = NULL;
   int sum = 0;
 
-  if (*h == NULL || h == NULL || (*h)->next == NULL || (*h)->next->next == NULL)
+  if (*h == NULL || h == NULL || (*h)->next == NULL)
     {
-      printf("L%d: can't add, stack too short", cmd->line_number);
+      printf("L%d: can't add, stack too short\n", cmd->line_number);
       exit(EXIT_FAILURE);
     }
   
@@ -182,9 +182,9 @@ void sub(cmd_t *cmd)
   stack_t *node_2 = NULL;
   int diff = 0;
 
-  if (*h == NULL || h == NULL || (*h)->next == NULL || (*h)->next->next == NULL)
+  if (h == NULL || *h == NULL || (*h)->next == NULL)
     {
-      printf("L%d: can't add, stack too short", cmd->line_number);
+      printf("L%d: can't sub, stack too short\n", cmd->line_number);
       exit(EXIT_FAILURE);
     }
   
@@ -195,4 +195,215 @@ void sub(cmd_t *cmd)
   node_2->n = diff;
 
   pop(cmd);
+}
+
+/**
+ * divide - divides second top element of the stack with the top element of the stack
+ *
+ * @cmd: access to useful variables from command struct
+ */
+
+void divide(cmd_t *cmd)
+{
+  stack_t **h = cmd->head;
+  stack_t *node_1 = NULL;
+  stack_t *node_2 = NULL;
+  int quotient = 0;
+
+  if (h == NULL || *h == NULL || (*h)->next == NULL)
+    {
+      printf("L%d: can't div, stack too short\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  if (node_1->n == 0)
+    {
+      printf("L%d: division by zero\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  node_1 = *h;
+  node_2 = (*h)->next;
+  quotient = node_2->n / node_1->n;
+  node_2->n = quotient;
+  pop(cmd);
+}
+
+/**
+ * mul - multiplies the second top element of the stack with the top element of the stack
+ *
+ * @cmd: access to useful variables from command struct
+ */
+
+void mul(cmd_t *cmd)
+{
+  stack_t **h = cmd->head;
+  stack_t *node_1 = NULL;
+  stack_t *node_2 = NULL;
+  int product = 0;
+
+  if (h == NULL || *h == NULL || (*h)->next == NULL)
+    {
+      printf("L%d: can't mul, stack too short\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+  
+  node_1 = *h;
+  node_2 = (*h)->next;
+
+  product = node_2->n * node_1->n;
+  node_2->n = product;
+
+  pop(cmd);
+}
+
+/**
+ * mod - computes the rest of the division of the second top element of the stack by the top element of the stack
+ *
+ * @cmd: access to useful variables from command struct
+ */
+
+void mod(cmd_t *cmd)
+{
+  stack_t **h = cmd->head;
+  stack_t *node_1 = NULL;
+  stack_t *node_2 = NULL;
+  int rem = 0;
+
+  if (h == NULL || *h == NULL || (*h)->next == NULL)
+    {
+      printf("L%d: can't mod, stack too short\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+  
+  if (node_1->n == 0)
+    {
+      printf("L%d: division by zero\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  node_1 = *h;
+  node_2 = (*h)->next;
+
+  rem = node_2->n % node_1->n;
+  node_2->n = rem;
+
+  pop(cmd);
+}
+
+/**
+ * pchar - prints the char at the top of the stack, followed by a new line
+ *
+ * @cmd: access to specific data from command struct
+ */
+
+void pchar(cmd_t *cmd)
+{
+  stack_t *h = *cmd->head;
+
+  if (h == NULL)
+    {
+      printf("L%d: can't pchar, stack empty\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+  
+  if (h->n < 0 || h->n > 127)
+    {
+      printf("L%d: can't pchar, value out of range\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  printf("%c\n", h->n);
+}
+
+/**
+ * pstr - prints the string starting at the top of the stack
+ *
+ * @cmd: data specific variables for command
+ */
+
+void pstr(cmd_t *cmd)
+{
+  stack_t *h = *cmd->head;
+
+  if (h == NULL)
+      return;
+
+  while (h != NULL && (h->n > 0 && h->n <= 127))
+    {
+      printf("%c", h->n);
+      h = h->next;
+    }
+  putchar('\n');
+}
+
+/**
+ * rotl - rotates the stack to the top
+ *
+ * @cmd: access to specific data from command struct
+ */
+
+void rotl(cmd_t *cmd)
+{
+  stack_t **h = cmd->head;
+  stack_t *first = NULL;
+  stack_t *second = NULL;
+  stack_t *last = NULL;
+
+  if (*h == NULL || h == NULL || (*h)->next == NULL)
+    {
+      printf("L%d: can't swap, stack too short\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  first = *h;
+  second = (*h)->next;
+  last = *h;
+
+  while (last->next != NULL)
+    {
+      last = last->next;
+    }
+
+  first->next = last->next;
+  first->prev = last;
+  last->next = first;
+  second->prev = NULL;
+  *h = second;
+}
+
+/**
+ * rotr - rotates the stack to the bottom
+ *
+ * @cmd: access to specific data from command struct
+ */
+
+void rotr(cmd_t *cmd)
+{
+  stack_t **h = cmd->head;
+  stack_t *first = NULL;
+  stack_t *second = NULL;
+  stack_t *last = NULL;
+
+  if (*h == NULL || h == NULL || (*h)->next == NULL)
+    {
+      printf("L%d: can't swap, stack too short\n", cmd->line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  first = *h;
+  second = *h;
+  last = *h;
+
+  while (last->next != NULL)
+      last = last->next;
+
+  while (second->next != last)
+    second = second->next;
+
+  last->next = first;
+  last->prev = first->prev;
+  first->prev = last;
+  second->next = NULL;
+  *h = last;
 }
