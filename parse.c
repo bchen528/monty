@@ -46,7 +46,6 @@ int parse(char *line, cmd_t *cmd)
 		while (siz--)
 			if (arg[siz] > 57 || arg[siz] < 48)
 			{
-				printf("index: %d, ascii: %d\n", siz, arg[siz]);
 				printf("L%d: usage: push integer\n", ln);
 				exit(EXIT_FAILURE);
 			}
