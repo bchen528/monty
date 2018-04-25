@@ -17,6 +17,6 @@ void eval(char *line, stack_t **h, stack_t **t, int mode, unsigned int ln)
 	cmd.head = h;
 	cmd.tail = t;
 
-	parse(line, &cmd);
-	run(&cmd);
+	if (parse(line, &cmd))
+		run(&cmd);
 }
