@@ -25,6 +25,7 @@ typedef struct stack_s
 
 /**
  * struct cmd_s - command struct
+ * @op: name of operation
  * @arg: argument for function
  * @mode: stack or queue mode
  * @head: head of linked list
