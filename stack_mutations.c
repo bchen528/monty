@@ -103,6 +103,15 @@ void rotl(cmd_t *cmd)
 	stack_t *second = NULL;
 	stack_t *last = NULL;
 
+	if (h == NULL || *h == NULL || (*h)->next == NULL)
+		return;
+
+	if ((*h)->next->next == NULL)
+	{
+		swap(cmd);
+		return;
+	}
+
 	first = *h;
 	second = (*h)->next;
 	last = *h;
@@ -129,6 +138,15 @@ void rotr(cmd_t *cmd)
 	stack_t *first = NULL;
 	stack_t *second = NULL;
 	stack_t *last = NULL;
+
+	if (h == NULL || *h == NULL || (*h)->next == NULL)
+		return;
+
+	if ((*h)->next->next == NULL)
+	{
+		swap(cmd);
+		return;
+	}
 
 	first = *h;
 	second = *h;
