@@ -57,7 +57,8 @@ void pchar(cmd_t *cmd)
 
 	if (h->n < 0 || h->n > 127)
 	{
-		printf("L%d: can't pchar, value out of range\n", cmd->line_number);
+		printf("L%d: can't pchar, value out of range\n", cmd->
+		       line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -75,7 +76,10 @@ void pstr(cmd_t *cmd)
 	stack_t *h = *cmd->head;
 
 	if (h == NULL)
+	{
+		putchar('\n');
 		return;
+	}
 
 	while (h != NULL && (h->n > 0 && h->n <= 127))
 	{
