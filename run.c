@@ -15,7 +15,7 @@ void run(cmd_t *cmd)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"divide", divide},
+		{"div", divide},
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
