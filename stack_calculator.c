@@ -103,7 +103,7 @@ void mul(cmd_t *cmd)
 	stack_t **h = cmd->head;
 	stack_t *node_1 = NULL;
 	stack_t *node_2 = NULL;
-	int product = 0;
+	int product;
 
 	if (h == NULL || *h == NULL || (*h)->next == NULL)
 	{
@@ -132,7 +132,7 @@ void mod(cmd_t *cmd)
 	stack_t **h = cmd->head;
 	stack_t *node_1 = NULL;
 	stack_t *node_2 = NULL;
-	int rem = 0;
+	int rem;
 
 	if (h == NULL || *h == NULL || (*h)->next == NULL)
 	{
