@@ -103,20 +103,12 @@ void rotl(cmd_t *cmd)
 	stack_t *second = NULL;
 	stack_t *last = NULL;
 
-	if (*h == NULL || h == NULL || (*h)->next == NULL)
-	{
-		printf("L%d: can't swap, stack too short\n", cmd->line_number);
-		exit(EXIT_FAILURE);
-	}
-
 	first = *h;
 	second = (*h)->next;
 	last = *h;
 
 	while (last->next != NULL)
-	{
 		last = last->next;
-	}
 
 	first->next = last->next;
 	first->prev = last;
@@ -137,12 +129,6 @@ void rotr(cmd_t *cmd)
 	stack_t *first = NULL;
 	stack_t *second = NULL;
 	stack_t *last = NULL;
-
-	if (*h == NULL || h == NULL || (*h)->next == NULL)
-	{
-		printf("L%d: can't swap, stack too short\n", cmd->line_number);
-		exit(EXIT_FAILURE);
-	}
 
 	first = *h;
 	second = *h;
