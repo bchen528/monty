@@ -76,4 +76,5 @@ void pchar(cmd_t *cmd);
 void pstr(cmd_t *cmd);
 void rotl(cmd_t *cmd);
 void rotr(cmd_t *cmd);
+void free_list(stack_t **head);
 #endif /*MONTY_H*/
