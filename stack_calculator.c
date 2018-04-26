@@ -77,14 +77,15 @@ void divide(cmd_t *cmd)
 		exit(EXIT_FAILURE);
 	}
 
+	node_1 = *h;
+	node_2 = (*h)->next;
+
 	if (node_1->n == 0)
 	{
 		printf("L%d: division by zero\n", cmd->line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	node_1 = *h;
-	node_2 = (*h)->next;
 	quotient = node_2->n / node_1->n;
 	node_2->n = quotient;
 	pop(cmd);
@@ -139,14 +140,14 @@ void mod(cmd_t *cmd)
 		exit(EXIT_FAILURE);
 	}
 
+	node_1 = *h;
+	node_2 = (*h)->next;
+
 	if (node_1->n == 0)
 	{
 		printf("L%d: division by zero\n", cmd->line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	node_1 = *h;
-	node_2 = (*h)->next;
 
 	rem = node_2->n % node_1->n;
 	node_2->n = rem;
