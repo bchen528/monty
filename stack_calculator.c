@@ -13,7 +13,7 @@ void add(cmd_t *cmd)
 	stack_t *node_2 = NULL;
 	int sum = 0;
 
-	if (*h == NULL || h == NULL || (*h)->next == NULL)
+	if (cmd == NULL || h == NULL || *h == NULL || (*h)->next == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", cmd->line_number);
 		exit(EXIT_FAILURE);
