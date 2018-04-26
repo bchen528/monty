@@ -22,6 +22,8 @@ void run(cmd_t *cmd)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"stack", stack_mode},
+		{"queue", queue_mode},
 		{NULL, NULL}
 	};
 	int i = 0;

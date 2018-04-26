@@ -1,7 +1,8 @@
 #include "monty.h"
 
 /**
- * push - adds a new node at the beginning of a stack_t list
+ * push - adds a new node at the beginning of a stack_t list,
+ * or in queue mode, add node to end
  *
  * @cmd: access specific data for command
  * Return: address of new node, or NULL if failed
@@ -11,6 +12,7 @@ void push(cmd_t *cmd)
 {
 	stack_t **h = cmd->head;
 	stack_t *new = NULL;
+	stack_t *temp = NULL;
 
 	if (h == NULL)
 	{
@@ -22,6 +24,27 @@ void push(cmd_t *cmd)
 	if (new == NULL)
 		exit(EXIT_FAILURE);
 
+	if (*cmd->mode == 1)
+	{
+
+		new->n = cmd->arg;
+		new->next = NULL;
+		new->prev = NULL;
+
+		if (*h == NULL)
+		{
+			*h = new;
+			return;
+		}
+
+		temp = *h;
+
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+		new->prev = temp;
+		return;
+	}
 	if (*h == NULL)
 	{
 		new->n = cmd->arg;
