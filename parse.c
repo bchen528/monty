@@ -47,7 +47,7 @@ int parse(char *line, cmd_t *cmd)
 		{
 			if (siz == 0 && arg[siz] == '-')
 				break;
-			if ((arg[siz] > 57 || arg[siz] < 48))
+			if (arg[siz] > 57 || arg[siz] < 48)
 			{
 				printf("L%d: usage: push integer\n", ln);
 				exit(EXIT_FAILURE);
