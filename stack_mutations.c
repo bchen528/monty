@@ -83,7 +83,8 @@ void swap(cmd_t *cmd)
 
 	first->next = second->next;
 	second->next = first;
-	third->prev = first;
+	if (third)
+		third->prev = first;
 	first->prev = second;
 	second->prev = NULL;
 	*h = second;
