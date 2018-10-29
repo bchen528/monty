@@ -27,7 +27,7 @@ A custom Monty bytecode interpreter.
   ```
   
 ## Usage Examples
-  Implementing the push and pall opcodes:
+  Implementing the push, pall, pop opcodes:
   ```
   $ cat bytecodes/07.m 
   push 1
@@ -49,6 +49,21 @@ A custom Monty bytecode interpreter.
   1
   ```
   
+  Implementing the pint opcode:
+  ```
+  $ cat bytecodes/06.m 
+  push 1
+  pint
+  push 2
+  pint
+  push 3
+  pint
+  $ ./monty bytecodes/06.m 
+  1
+  2
+  3
+  ```
+  
   Implementing the add opcode:
   ```
   $ cat bytecodes/12.m 
@@ -65,6 +80,138 @@ A custom Monty bytecode interpreter.
   5
   1
   ```
+  
+  Implementing the swap opcode:
+  ```
+  $ cat bytecodes/09.m 
+  push 1
+  push 2
+  push 3
+  pall
+  swap
+  pall
+  $ ./monty bytecodes/09.m 
+  3
+  2
+  1
+  2
+  3
+  1
+  ```
+  
+  Implementing the pchar opcode:
+  ```
+  $ cat bytecodes/28.m 
+  push 72
+  pchar
+  $ ./monty bytecodes/28.m 
+  H
+  ```
+  
+  Implementing the pstr opcode:
+  ```
+  $ cat bytecodes/31.m
+  push 1
+  push 2
+  push 3
+  push 4
+  push 0
+  push 110
+  push 0
+  push 110
+  push 111
+  push 116
+  push 114
+  push 101
+  push 98
+  push 108
+  push 111
+  push 72
+  pstr
+  $ ./monty bytecodes/31.m 
+  Holberton
+  ```
+  
+  Implementing the rotl opcode:
+  ```
+  $ cat bytecodes/35.m 
+  push 1
+  push 2
+  push 3
+  push 4
+  push 5
+  push 6
+  push 7
+  push 8
+  push 9
+  push 0
+  pall
+  rotl
+  pall
+  $ ./monty bytecodes/35.m 
+  0
+  9
+  8
+  7
+  6
+  5
+  4
+  3
+  2
+  1
+  9
+  8
+  7
+  6
+  5
+  4
+  3
+  2
+  1
+  0
+  ```
+  
+  Implementing the stack and queue opcodes:
+  ```
+  $ cat bytecodes/47.m
+  queue
+  push 1
+  push 2
+  push 3
+  pall
+  stack
+  push 4
+  push 5
+  push 6
+  pall
+  add
+  pall
+  queue
+  push 11111
+  add
+  pall
+  $ ./monty bytecodes/47.m
+  1
+  2
+  3
+  6
+  5
+  4
+  1
+  2
+  3
+  11
+  4
+  1
+  2
+  3
+  15
+  1
+  2
+  3
+  11111
+  ```
+  
 ## File Descriptions
   * [monty.c](monty.c) - contains main function
     * `main` - takes filename(s) as an argument
