@@ -22,7 +22,7 @@ A custom Monty bytecode interpreter.
   
 ## Setup
   ```
-  git clone 
+  git clone https://github.com/bchen528/monty.git
   gcc -Wall -Werror -Wextra -pedantic *.c -o monty
   ```
   
