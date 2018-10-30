@@ -27,7 +27,7 @@ A custom Monty bytecode interpreter.
   ```
   
 ## Usage Examples
-  Note: Please see [File Descriptions] for opcode definitions.
+  Note: Please see [File Descriptions](#file-descriptions) for opcode definitions.
 
   Implementing the push, pall, pop opcodes:
   ```
