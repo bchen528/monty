@@ -261,7 +261,7 @@ A custom Monty bytecode interpreter.
     * `pstr` - prints the string starting at the top of the stack
     * `nop` - does not do anything
   * [monty.h](monty.h) - header file
-  * [brainfuck](brainfuck) - contains answers to brainfuck exercises
+  * [brainfuck](brainfuck) - contains brainfuck scripts
     * [1000-holberton.bf](brainfuck/1000-holberton.bf) - prints `Holberton`, followed by a new line
     * [1001-add.bf](brainfuck/1001-add.bf) - add two digits given by the user from stdin and prints result
     * [1002-mul.bf](brainfuck/1002-mul.bf) - multiply two digits given by the user from stdin and prints result
