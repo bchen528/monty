@@ -27,6 +27,8 @@ A custom Monty bytecode interpreter.
   ```
   
 ## Usage Examples
+  Note: Please see [File Descriptions] for opcode definitions.
+
   Implementing the push, pall, pop opcodes:
   ```
   $ cat bytecodes/07.m 
@@ -64,7 +66,24 @@ A custom Monty bytecode interpreter.
   3
   ```
   
-  Implementing the add opcode:
+  Implementing the swap opcode:
+  ```
+  $ cat bytecodes/09.m 
+  push 1
+  push 2
+  push 3
+  pall
+  swap
+  pall
+  $ ./monty bytecodes/09.m 
+  3
+  2
+  1
+  2
+  3
+  1
+  ```
+    Implementing the add opcode:
   ```
   $ cat bytecodes/12.m 
   push 1
@@ -81,21 +100,18 @@ A custom Monty bytecode interpreter.
   1
   ```
   
-  Implementing the swap opcode:
+  Implementing the sub opcode:
   ```
-  $ cat bytecodes/09.m 
+  $ cat bytecodes/19.m 
   push 1
   push 2
+  push 10
   push 3
+  sub
   pall
-  swap
-  pall
-  $ ./monty bytecodes/09.m 
-  3
+  $ ./monty bytecodes/19.m 
+  7
   2
-  1
-  2
-  3
   1
   ```
   
